@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <link rel="stylesheet" type="text/css" href="style.css">
+  <title>Product Purchase Calculator</title>
+  <script>
+    // Define the prices of the products
+    const prices = {
+      A: 20,
+      B: 40,
+      C: 50,
+    };
+
+    // Define the discount rules
+    const discounts = {
+      flat_10_discount:0.1,
+      bulk_5_discount: 0.05, // 5% discount on bulk_5_discount on any A / B / C product
+      bulk_10_discount: 0.1, // 10% discount on bulk_10_discount
+      tiered_50_discount: 0.5, // 50% discount on tiered_50_discount
+    };
+
+    // Function to calculate the total cost
+    function calculateTotalCost() {
+      // Get the quantity values from the input fields
+      
+      var num=Number(document.getElementById("quantityA").value);
+      var num=Number(document.getElementById("quantityB").value);
+      var num=Number(document.getElementById("quantityC").value);
+      
+
+      
+
+      switch (num){
+                    case 1:
+                        if(prices.A+prices.B+prices.C>=200){
+                            d=10;
+                        }
+                        else if(num>=10){
+                            d=5;
+                        }
+                        else if(num>=20){
+                            d=10;
+                        }
+                        else if(num>=30){
+                            d=50;
+
+                        }
+                       
+                        break;
+
+                        default:
+                        d=0;
+                }
+        
+      // Display the total cost
+                       var dis=num * d/100;
+                       var totalCost=num - dis;
+                       
+
+                        document.write("the Amount of product is Rs ." +totalCost+" and discount is ("+dis+"%)")
+      
+    }
+  </script>
+</head>
+<body >
+  <h1>Purchase here!</h1>
+        <table border="1">
+            <tr>
+            <th>Product name</th>
+           <th>Price</th>
+           
+           <tr>
+            <td>Product A</td>
+            <td>$20</td>
+           </tr>
+
+           <tr>
+            <td>Product B</td>
+            <td>$40</td>
+           </tr>
+
+           <tr>
+            <td>Product C</td>
+            <td>$50</td>
+           </tr>
+           
+
+
+
+          </table>
+
+  <h1>Product Purchase Calculator</h1>
+
+  <label for="quantityA">Quantity of Product A:</label>
+  <input type="number" id="quantityA" value="0"><br>
+
+  <label for="quantityB">Quantity of Product B:</label>
+  <input type="number" id="quantityB" value="0"><br>
+
+  <label for="quantityC">Quantity of Product C:</label>
+  <input type="number" id="quantityC" value="0"><br>
+
+  <button s onclick="calculateTotalCost()">Calculate Total Cost</button>
+
+  <p id="totalCost"></p>
+</body>
+</html>
